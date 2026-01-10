@@ -1,6 +1,10 @@
-# TODO: Implement Back to Homepage Feature
+# TODO: Implement Vehicle Creation and Management in Maintenance Page
 
-- [x] Add "Back to Homepage" link to Trackit/src/app/bakery/page.tsx
-- [x] Add "Back to Homepage" link to Trackit/src/app/auto-parts/page.tsx
-- [x] Add "Back to Homepage" link to Trackit/src/app/maintenance/page.tsx
-- [ ] Test navigation by running the app
+- [ ] Update Vehicle interface to include licensePlate: string
+- [ ] Add newVehicle state for the creation form
+- [ ] Add a "Create New Vehicle" form section with fields for make, model, year, vin, licensePlate
+- [ ] Update the select dropdown to include licensePlate in the display
+- [ ] Add a "Manage Vehicles" section listing all vehicles with delete buttons
+- [ ] Add a "Back to Home" link at the top
+- [ ] Handle vehicle creation by adding to vehicles state
+- [ ] Handle vehicle deletion by filtering out the vehicle from state
