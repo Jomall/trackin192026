@@ -40,17 +40,23 @@ model BakeryItem {
 }
 
 model AutoPart {
-  id            Int      @id @default(autoincrement())
-  name          String
-  partNumber    String?
-  description   String?
-  quantity      Int      @default(0)
-  price         Float?
-  photo         String?
-  licensePlate  String?
-  vin           String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id               Int      @id @default(autoincrement())
+  name             String
+  partNumber       String?
+  description      String?
+  quantity         Int      @default(0)
+  price            Float?
+  photo            String?
+  licensePlate     String?
+  vin              String?
+  purchaseLocation String?   // Where the part was purchased
+  desiredStockLevel Int      @default(0)  // Desired stock level for alerts
+  zone             String?   // Warehouse storage zone (e.g., A1, B2, C3)
+  dateOfEntry      DateTime  @default(now())  // When the part was first entered
+  lastUpdated      DateTime  @updatedAt  // Last time the part was edited
+  lastStockUpdate  DateTime? // Last time stock was added/removed
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 }
 
 model Vehicle {

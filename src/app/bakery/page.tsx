@@ -11,11 +11,12 @@ interface BakeryItem {
   description?: string
   quantity: number
   image?: string
+  weight?: number
 }
 
 export default function Bakery() {
   const [items, setItems] = useState<BakeryItem[]>([])
-  const [newItem, setNewItem] = useState({ itemNumber: '', name: '', type: 'machinery', description: '', quantity: 0, image: '' })
+  const [newItem, setNewItem] = useState({ itemNumber: '', name: '', type: 'machinery', description: '', quantity: 0, image: '', weight: 0 })
   const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function Bakery() {
       ...newItem
     }
     setItems([...items, item])
-    setNewItem({ itemNumber: '', name: '', type: 'machinery', description: '', quantity: 0, image: '' })
+    setNewItem({ itemNumber: '', name: '', type: 'machinery', description: '', quantity: 0, image: '', weight: 0 })
   }
 
   const handleDelete = (id: number) => {
@@ -121,6 +122,19 @@ export default function Bakery() {
                 required
               />
             </div>
+            {newItem.type === 'supplies' && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Weight (kg)</label>
+                <input
+                  type="number"
+                  placeholder="Enter weight in kg"
+                  value={newItem.weight}
+                  onChange={(e) => setNewItem({...newItem, weight: parseFloat(e.target.value)})}
+                  className="border rounded px-3 py-2 w-full"
+                  step="0.01"
+                />
+              </div>
+            )}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Image</label>
               <input
